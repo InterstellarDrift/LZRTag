@@ -11,7 +11,7 @@
 #include "IR.h"
 
 #include "../weapons/wyre.h"
-#include "../weapons/mylin.h"
+// #include "../weapons/mylin.h"
 #include "../weapons/zinger.h"
 
 #include "../fx/sounds.h"
@@ -59,7 +59,7 @@ GunSpecs &GunHandler::cGun() {
 
 	GunSpecs * gunSets[] = {
 			&LZR::Weapons::wyre,
-			&LZR::Weapons::mylin,
+			// &LZR::Weapons::mylin,
 			&LZR::Weapons::zinger,
 	};
 

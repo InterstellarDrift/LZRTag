@@ -164,9 +164,9 @@ void take_battery_measurement() {
 		bMin = 1;
 	if(battery.current_capacity() < bMin && !battery.is_charging) {
 		if(main_weapon_status == NOMINAL) {
-			ESP_LOGE("LZR::Core", "Battery critically low, shutting down!");
+			ESP_LOGE("LZR::Core", "Battery critically low, shutting down! (REMOVED)");
 			vTaskDelay(3);
-			esp_restart();
+			// esp_restart();
 		}
 
 		main_weapon_status = DISCHARGED;
@@ -284,13 +284,14 @@ void setup() {
     LZR::FX::target_mode = LZR::BATTERY_LEVEL;
     vTaskDelay(200);
 
-    if(main_weapon_status == DISCHARGED) {
-    	ESP_LOGE("LZR::Core", "Battery low, sleeping!");
+    // if(main_weapon_status == DISCHARGED) {
+    // 	ESP_LOGE("LZR::Core", "Battery low, sleeping!");
 
-    	vTaskDelay(3*600);
-    	shutdown_system();
-    }
-    else if(main_weapon_status == CHARGING && !read_nav_switch()) {
+    // 	vTaskDelay(3*600);
+    // 	shutdown_system();
+    // }
+    // else
+	if(main_weapon_status == CHARGING && !read_nav_switch()) {
     	ESP_LOGI("LZR::Core", "Charging detected, entering CHG mode");
 
     	LZR::FX::target_mode = LZR::CHARGE;
