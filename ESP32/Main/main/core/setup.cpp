@@ -13,6 +13,7 @@
 #include "../fx/animatorThread.h"
 
 #include "driver/ledc.h"
+#include "driver/adc.h"
 
 #include <array>
 
@@ -109,7 +110,7 @@ void set_ledc() {
 }
 
 void power_config() {
-	esp_pm_config_esp32_t pCFG;
+	esp_pm_config_esp32s2_t pCFG;
 	pCFG.max_freq_mhz = 240;
 	pCFG.min_freq_mhz = 240;
 	pCFG.light_sleep_enable = false;
@@ -165,11 +166,11 @@ void take_battery_measurement() {
 	if(battery.current_capacity() < bMin && !battery.is_charging) {
 		if(main_weapon_status == NOMINAL) {
 			ESP_LOGE("LZR::Core", "Battery critically low, shutting down! (REMOVED)");
-			vTaskDelay(3);
+			// vTaskDelay(3);
 			// esp_restart();
 		}
 
-		main_weapon_status = DISCHARGED;
+		// main_weapon_status = DISCHARGED;
 	}
 
 	if(xTaskGetTickCount() > (30*600 + lastBatteryUpdate)) {

@@ -59,23 +59,16 @@ Lasertag::GunSpecs mylin {
 	.perShotHeatup = 0.4,
 	.perTickCooldown = 0.98,
 
-	// .chargeSounds = {
-	// 	(encoded_audio_BF_RINO_shot_1),
-	// 	(encoded_audio_BF_RINO_shot_2),
-	// 	(encoded_audio_BF_RINO_shot_3),
-	// 	(encoded_audio_BF_RINO_shot_4),
-	// 	(encoded_audio_BF_RINO_shot_5),
-	// 	(encoded_audio_BF_RINO_shot_6),
-	// 	(encoded_audio_BF_RINO_shot_7),
-	// 	(encoded_audio_BF_RINO_shot_8),
-	// 	(encoded_audio_BF_RINO_shot_9),
-	// 	(encoded_audio_BF_RINO_shot_10),
-	// },
-	// .shotSounds = {
-	// },
-	// .cooldownSounds = {
-	// 		AC(wyre_cooldown)
-	// }
+	.chargeSounds = {
+			AC(wyre_cooldown)
+	},
+	.shotSounds = {
+			AC(wyre_cooldown)
+
+	},
+	.cooldownSounds = {
+			AC(wyre_cooldown)
+	}
 };
 
 }

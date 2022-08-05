@@ -50,11 +50,11 @@ void app_main()
 
 	 vTaskDelay(1800);
 
-	 auto s = LZR::audioManager.play(encoded_audio_test);
+	//  auto s = LZR::audioManager.play(encoded_audio_test);
 
-	 vTaskDelay(1200);
+	//  vTaskDelay(1200);
 
-	 s->fade_out();
+	//  s->fade_out();
 
     while(true) {
 		 vTaskDelay(10*600);

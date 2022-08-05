@@ -11,7 +11,7 @@
 #include "IR.h"
 
 #include "../weapons/wyre.h"
-// #include "../weapons/mylin.h"
+#include "../weapons/mylin.h"
 #include "../weapons/zinger.h"
 
 #include "../fx/sounds.h"
@@ -20,6 +20,8 @@
 #include "esp_log.h"
 
 #include <cmath>
+#include <sstream>
+#include <iostream>
 
 namespace Lasertag {
 
@@ -36,8 +38,9 @@ GunHandler::GunHandler(gpio_num_t trgPin, Xasin::Audio::TX &audio)
 		audio(audio) {
 
 	gpio_set_direction(triggerPin, GPIO_MODE_INPUT);
-	gpio_set_pull_mode(triggerPin, GPIO_PULLUP_ONLY);
-	gpio_pullup_en(triggerPin);
+	gpio_set_pull_mode(triggerPin, GPIO_PULLUP_PULLDOWN);
+	gpio_pulldown_en(triggerPin);
+	// gpio_pullup_en(triggerPin);
 
 	esp_log_level_set(GUN_TAG, ESP_LOG_DEBUG);
 
@@ -59,15 +62,44 @@ GunSpecs &GunHandler::cGun() {
 
 	GunSpecs * gunSets[] = {
 			&LZR::Weapons::wyre,
-			// &LZR::Weapons::mylin,
+			&LZR::Weapons::mylin,
 			&LZR::Weapons::zinger,
 	};
 
 	return *gunSets[currentGunID-1];
 }
 
+std::string bool_as_text(bool b)
+{
+    std::stringstream converter;
+    converter << std::boolalpha << b;   // flag boolalpha calls converter.setf(std::ios_base::boolalpha)
+    return converter.str();
+}
+
 bool GunHandler::triggerPressed() {
-	return gpio_get_level(triggerPin) == 0;
+	ESP_LOGI("InterstellarDrift_Debugging", "TRIGGER CHECKED");
+	bool isTriggered = gpio_get_level(triggerPin) == 0;
+	int pinInt = gpio_get_level(triggerPin);
+	std::string tmp = std::to_string(pinInt);
+	char const *num_char = tmp.c_str();
+	printf("Pin State: %s \n", num_char);
+	// printf("PIN STATE" + int pinInt);
+	printf("\n");
+	// if(pinInt == 0) {
+	// 	ESP_LOGI("InterstellarDrift_Debugging", "Pin Value 0");
+	// } else {
+	// 	ESP_LOGI("InterstellarDrift_Debugging", "Pin Value 1");
+
+	// }
+	
+	// if(isTriggered)
+	// 	ESP_LOGI("InterstellarDrift_Debugging", "TRIGGER PRESSED ??????");
+	// else
+	// 	ESP_LOGI("InterstellarDrift_Debugging", "TRIGGER IS NOT PRESSED");
+
+
+	return isTriggered;
+	
 }
 
 void GunHandler::handle_shot() {
@@ -94,6 +126,8 @@ void GunHandler::handle_shot() {
 	add_sound(cGun().shotSounds);
 
 	LZR::IR::send_signal();
+	ESP_LOGD("InterstellarDrift Debugging", "IR FIRED SHOT");
+
 }
 
 void GunHandler::deny_beep() {
@@ -209,6 +243,7 @@ void GunHandler::handle_wait_valid() {
 
 	// Wait for the user to press the trigger
 	if(!triggerPressed())
+		ESP_LOGI("InterstellarDrift_Debugging", "TRIGGER PRESSED");
 		return;
 
 	// Play an empty clip sound if we don't have any more ammo and
@@ -324,6 +359,7 @@ void GunHandler::shot_tick() {
 	// Is used to require re-pressing the trigger for some actions
 	if(!triggerPressed()) {
 		pressAlreadyTriggered = false;
+		// ESP_LOGI("InterstellarDrift_Debugging", "TRIGGER WAS RELEASED");
 	}
 }
 
