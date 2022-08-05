@@ -97,7 +97,8 @@ Player::Player(const std::string devID, Xasin::MQTT::Handler &mqtt) :
 }
 
 void Player::init() {
-	Xasin::MQTT::Handler::start_wifi(WIFI_STATION_SSID, WIFI_STATION_PASSWD);
+	Xasin::MQTT::Handler::set_nvs_wifi(WIFI_STATION_SSID, WIFI_STATION_PASSWD);
+	Xasin::MQTT::Handler::start_wifi_from_nvs(1);
 
 	mqtt.start(MQTT_SERVER_ADDR);
 	mqtt.set_status("OK");

@@ -286,14 +286,14 @@ void shutdown_system() {
 }
 
 void setup_weapons() {
-	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, colibri_config));
-	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, whip_config));
-	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, steelfinger_config));
-	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, sw_554_config));
+	// weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, colibri_config));
+	// weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, whip_config));
+	// weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, steelfinger_config));
+	// weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, sw_554_config));
 
-	weapons.push_back(new LZRTag::Weapon::HeavyWeapon(gunHandler, nico_6_config));
+	// weapons.push_back(new LZRTag::Weapon::HeavyWeapon(gunHandler, nico_6_config));
 
-	weapons.push_back(new LZRTag::Weapon::BeamWeapon(gunHandler, scalpel_cfg));
+	// weapons.push_back(new LZRTag::Weapon::BeamWeapon(gunHandler, scalpel_cfg));
 }
 
 void setup() {
