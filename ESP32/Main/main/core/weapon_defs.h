@@ -3,7 +3,10 @@
 
 #include <lzrtag/weapon.h>
 #include "../fx/sounds/denybeep.h"
+#include "../test.h"
+#include "../../../../XasCode/ESP32/AudioHandler/include/xasin/audio/OpusCassette.h"
 
+#define AUDIOTST Xasin::Audio::OpusCassetteCollection{encoded_audio_test}
 // #include <../../sounds/lzrtag-sfx/RELOADING/collection.h>
 // #include <../../sounds/lzrtag-sfx/SCALPEL-V9/start/collection.h>
 // #include <../../sounds/lzrtag-sfx/SCALPEL-V9/loop/collection.h>
@@ -16,6 +19,7 @@
 
 // #include <../../sounds/lzrtag-sfx/NICO-6/collection.h>
 // #include <../../sounds/lzrtag-sfx/NICO-6/charge/collection.h>
+// #define beep1 Xasin::Audio::OpusCassetteCollection<raw_denybeep> 
 
 
 // static const LZRTag::Weapon::beam_weapon_config scalpel_cfg = {
@@ -24,13 +28,13 @@
 //     raw_denybeep, raw_denybeep, raw_denybeep
 // };
 
-// static const LZRTag::Weapon::shot_weapon_config colibri_config = {
-//     12, 24,
-//     1000, 4000,
-//     encoded_audio_RELOADING_3_Laser_pistol_heavy_3,
-//     collection_COLIBRI_M2,
-//     170, 2, 150, true
-// };
+static const LZRTag::Weapon::shot_weapon_config colibri_config = {
+    12, 24,
+    1000, 4000,
+    encoded_audio_test,
+    AUDIOTST,
+    170, 2, 150, true
+};
 
 // static const LZRTag::Weapon::shot_weapon_config whip_config = {
 //     32, 128,

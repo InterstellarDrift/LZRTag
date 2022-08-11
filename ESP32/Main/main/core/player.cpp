@@ -97,11 +97,16 @@ Player::Player(const std::string devID, Xasin::MQTT::Handler &mqtt) :
 }
 
 void Player::init() {
-	Xasin::MQTT::Handler::set_nvs_wifi(WIFI_STATION_SSID, WIFI_STATION_PASSWD);
-	Xasin::MQTT::Handler::start_wifi_from_nvs(1);
 
+	Xasin::MQTT::Handler::set_nvs_wifi(WIFI_STATION_SSID, WIFI_STATION_PASSWD);
+	ESP_LOGD("Player INIT", "set nvs wifi");
+	Xasin::MQTT::Handler::start_wifi_from_nvs(1);
+	ESP_LOGD("Player INIT", "Started wifi from nvs");
+
+	ESP_LOGD("Player INIT", "player INIT");
 	mqtt.start(MQTT_SERVER_ADDR);
 	mqtt.set_status("OK");
+	ESP_LOGD("Player INIT", "player INIT");
 }
 
 void Player::tick() {

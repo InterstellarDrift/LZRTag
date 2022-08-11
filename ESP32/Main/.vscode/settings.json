@@ -2,12 +2,29 @@
   "C_Cpp.clang_format_style": "Visual Studio",
   "editor.formatOnSave": false,
   "[cpp]": {
-    "editor.quickSuggestions": true
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
   },
   "[c]": {
-    "editor.quickSuggestions": true
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
   },
   "C_Cpp.intelliSenseEngine": "Tag Parser",
   "idf.flashType": "UART",
-  "idf.port": "/dev/ttyUSB0"
+  "idf.port": "/dev/ttyUSB0",
+  "idf.adapterTargetName": "esp32",
+  "files.associations": {
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
+    "*.tcc": "cpp",
+    "cstddef": "cpp",
+    "limits": "cpp"
+  }
 }
