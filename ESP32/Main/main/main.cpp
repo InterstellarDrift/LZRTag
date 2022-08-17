@@ -49,14 +49,19 @@ void app_main()
     esp_event_loop_init(event_handler, 0);
 
     LZR::setup();
+    ESP_LOGI("LZR", "SETUP SUCCESSFUL");
 
     XNM::NetHelpers::init_global_r3_ca();
     XNM::NetHelpers::set_mqtt(LZR::mqtt);
 
     XNM::NetHelpers::init();
+    ESP_LOGI("LZR", "XNM::NetHelpers setup");
+
 
     while(true) {
-		 vTaskDelay(10*600);
+		 vTaskDelay(10*60);
+        ESP_LOGI("LZR", "YET ANOTHER VTASKDELAY");
+
     }
 
     fflush(stdout);

@@ -25,6 +25,13 @@
     "vector": "cpp",
     "*.tcc": "cpp",
     "cstddef": "cpp",
-    "limits": "cpp"
+    "limits": "cpp",
+    "unordered_map": "cpp",
+    "fstream": "cpp",
+    "istream": "cpp",
+    "ostream": "cpp",
+    "sstream": "cpp",
+    "numeric": "cpp",
+    "chrono": "cpp"
   }
 }

@@ -98,10 +98,10 @@ Player::Player(const std::string devID, Xasin::MQTT::Handler &mqtt) :
 
 void Player::init() {
 
-	Xasin::MQTT::Handler::set_nvs_wifi(WIFI_STATION_SSID, WIFI_STATION_PASSWD);
-	ESP_LOGD("Player INIT", "set nvs wifi");
-	Xasin::MQTT::Handler::start_wifi_from_nvs(1);
-	ESP_LOGD("Player INIT", "Started wifi from nvs");
+	// Xasin::MQTT::Handler::set_nvs_wifi(WIFI_STATION_SSID, WIFI_STATION_PASSWD);
+	// ESP_LOGD("Player INIT", "set nvs wifi");
+	// Xasin::MQTT::Handler::start_wifi_from_nvs(1);
+	// ESP_LOGD("Player INIT", "Started wifi from nvs");
 
 	ESP_LOGD("Player INIT", "player INIT");
 	mqtt.start(MQTT_SERVER_ADDR);
@@ -114,6 +114,7 @@ void Player::tick() {
 		deadUntil = 0;
 		mqtt.publish_to("get/dead", "false", 0, 1, true);
 	}
+	// ESP_LOGD("Player::tick()", "player TICKED");
 }
 
 int Player::get_id() {
@@ -168,6 +169,7 @@ bool Player::can_shoot() {
 		return false;
 
 	return true;
+	ESP_LOGD("LZR::Player", "PLAYER CAN SHOOT");
 }
 
 int Player::get_gun_num() {

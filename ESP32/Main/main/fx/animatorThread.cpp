@@ -231,7 +231,7 @@ void animation_thread(void *args) {
 		if(g_num > 0 && g_num <= weapons.size())
 			gunHandler.set_weapon(weapons[g_num]);
 
-		gunHandler.update_btn(!gpio_get_level(PIN_TRIGR));
+		gunHandler.update_btn(!gpio_get_level(PIN_TRIGR) == 0);
 		gunHandler.fx_tick();
 
 		if(player.should_reload)
