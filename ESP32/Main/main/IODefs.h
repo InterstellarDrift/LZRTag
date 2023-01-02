@@ -40,5 +40,3 @@
 #define PIN_CTRL_BACK	GPIO_NUM_0
 #define PIN_CTRL_DOWN	GPIO_NUM_4
 #endif /* MAIN_IODEFS_H_ */
-
-#endif /* MAIN_IODEFS_H_ */
