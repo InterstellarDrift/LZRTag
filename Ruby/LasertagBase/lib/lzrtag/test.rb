@@ -27,7 +27,7 @@ DebugHook.on [:playerRegenerated, :playerHurt] do |player|
 	player.heartbeat = (player.life < 30);
 end
 
-$mqtt = MQTT::SubHandler.new("mqtt://192.168.178.230");
+$mqtt = MQTT::SubHandler.new("mqtt://localhost");
 $handler = LZRTag.Handler.new($mqtt);
 
 $handler.add_hook(DebugHook);
@@ -87,7 +87,7 @@ class TestGame < LZRTag::Game::Base
 
 
 	phase_prep :running do
-		@phaseTime = -3*60;
+		@phaseTime = -30*60;
 
 		@handler.each_participating do |pl|
 			pl.brightness = :active
