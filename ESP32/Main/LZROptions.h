@@ -8,6 +8,7 @@
 #define WIFI_STATION_SSID   "NETGEAR50\0"
 #define WIFI_STATION_PASSWD "narrowhat082\0"
 
+
 #define LZR_DEBUG_MODE
 
 #endif

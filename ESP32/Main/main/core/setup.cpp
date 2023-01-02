@@ -271,7 +271,7 @@ void housekeeping_thread(void *args) {
 		}
 
 		navswitch_tick();
-		GYR::tick();
+		// GYR::tick();
 
 		vTaskDelay(30);
 
@@ -295,39 +295,67 @@ void shutdown_system() {
 
 void setup_weapons() {
 	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, colibri_config));
-	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, whip_config));
-	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, steelfinger_config));
-	weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, sw_554_config));
+	// weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, whip_config));
+	// weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, steelfinger_config));
+	// weapons.push_back(new LZRTag::Weapon::ShotWeapon(gunHandler, sw_554_config));
 
-	weapons.push_back(new LZRTag::Weapon::HeavyWeapon(gunHandler, nico_6_config));
+	// weapons.push_back(new LZRTag::Weapon::HeavyWeapon(gunHandler, nico_6_config));
 
-	weapons.push_back(new LZRTag::Weapon::BeamWeapon(gunHandler, scalpel_cfg));
+	// weapons.push_back(new LZRTag::Weapon::BeamWeapon(gunHandler, scalpel_cfg));
 }
 
 void setup() {
 	power_config();
+	ESP_LOGI("LZR::Core", "power_config() was run ");
 
 	vTaskDelay(10);
 
-	setup_io_pins();
+	setup_io_pins();	
+	ESP_LOGI("LZR::Core", "setup_io_pins() was run ");
+	vTaskDelay(10);
+
 	setup_adc();
+	ESP_LOGI("LZR::Core", "setup_adc() was run ");
+	vTaskDelay(10);
+
 	set_ledc();
+	ESP_LOGI("LZR::Core", "set_ledc() was run ");
+	vTaskDelay(10);
+
 
 	IR::init();
-	GYR::init();
+	ESP_LOGI("LZR::Core", "IR::init() was run ");
+	vTaskDelay(10);
+
+	// GYR::init();
 
 	xTaskCreate(housekeeping_thread, "Housekeeping", 3*1024, nullptr, 10, nullptr);
+	vTaskDelay(10);
 
 	setup_audio();
+	vTaskDelay(1000);
+
+	ESP_LOGI("LZR::Core", "setup_audio() was run ");
+
 	start_animation_thread();
+	vTaskDelay(1000);
+
+	ESP_LOGI("LZR::Core", "start_animation_thread() was run ");
+
 
 	gunHandler.start_thread();
+	vTaskDelay(1000);
+
+	ESP_LOGI("LZR::Core", "gunHandler.start_thread() was run ");
 	gunHandler.can_shoot_func = []() {
 		return player.can_shoot();
 	};
 	gunHandler.on_shot_func = []() { IR::send_signal(); };
-	
+	ESP_LOGI("LZR::Core", "gunHandler shot config");
 	setup_weapons();
+	vTaskDelay(1000);
+
+	ESP_LOGI("LZR::Core", "setup_weapons() was run ");
 
     LZR::FX::target_mode = LZR::BATTERY_LEVEL;
     vTaskDelay(200);
@@ -342,6 +370,7 @@ void setup() {
     // 	ESP_LOGI("LZR::Core", "Charging detected, entering CHG mode REMOVED");
 
     // 	// LZR::FX::target_mode = LZR::CHARGE;
+
     // }
     // else {
 	player.init();

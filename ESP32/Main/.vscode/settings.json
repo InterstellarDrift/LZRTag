@@ -20,7 +20,13 @@
   "idf.port": "/dev/ttyUSB0",
   "idf.adapterTargetName": "esp32",
   "files.associations": {
+
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
     "*.tcc": "cpp",
+    "cstddef": "cpp",
+    "limits": "cpp",
     "unordered_map": "cpp",
     "fstream": "cpp",
     "istream": "cpp",
@@ -80,5 +86,6 @@
     "cinttypes": "cpp",
     "typeinfo": "cpp",
     "bit": "cpp"
+
   }
 }

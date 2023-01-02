@@ -30,6 +30,8 @@
 #define WS2812_NUMBER 	4
 
 #define PIN_BAT_GREEN	GPIO_NUM_34
+// none of the battery monitoring is currently being used, I believe this is just a random pin.
+
 #define PIN_BAT_RED		GPIO_NUM_18
 
 #define PIN_CONN_IND	GPIO_NUM_21
@@ -37,4 +39,6 @@
 #define PIN_CTRL_FWD	GPIO_NUM_2
 #define PIN_CTRL_BACK	GPIO_NUM_0
 #define PIN_CTRL_DOWN	GPIO_NUM_4
+#endif /* MAIN_IODEFS_H_ */
+
 #endif /* MAIN_IODEFS_H_ */

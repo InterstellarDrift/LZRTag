@@ -73,26 +73,19 @@ void app_main()
     esp_event_loop_init(event_handler, 0);
 
     LZR::setup();
+    ESP_LOGI("LZR", "SETUP SUCCESSFUL");
 
     XNM::NetHelpers::init_global_r3_ca();
     XNM::NetHelpers::set_mqtt(LZR::mqtt);
 
     XNM::NetHelpers::init();
-    // screen.initialize();
-    // drawBox.visible = true;
 
-
-
-
-    // drawBox = new OLED::DrawBox(100, 32, &screen);
-    // drawBox.visible = true;
-    // drawBox.write_string(32, 23, std::string("HELLO"), 1 , 1, nullptr);
+    ESP_LOGI("LZR", "XNM::NetHelpers setup");
 
 
     while(true) {
-		 vTaskDelay(10*600);
-        //  drawBox.write_string(0, 0, std::string("HP:100"),21 , 1, nullptr);
-        //  drawBox.write_string(0, 36, std::string("GUN:3"),21 , 1, nullptr);
+		 vTaskDelay(10*60);
+
     }
 
     fflush(stdout);
